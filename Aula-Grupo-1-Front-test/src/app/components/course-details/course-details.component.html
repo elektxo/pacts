@@ -1,0 +1,67 @@
+
+
+<div class="container">
+    <h1>Curso: {{course.title}}</h1>
+<h3>{{course.description}}</h3>
+<h5>Precio del curso: {{course.price}}€</h5>
+
+<hr>
+<div class="row" style="height: 600px;">
+    <div class="col content-box" data-bs-spy="scroll">
+        @if (course) {
+            <div>
+                <h3 class="mt-5">Contenidos del curso</h3>
+                @for (content of course.contents; track content) {
+                <div class="my-3">
+                    <div class="card">
+                        <div class="card-body" style="border: 4px solid #93f08c;">
+                            <h5>{{content.title}}</h5>
+                            <button type="submit" class="btn btn-danger fit-content"
+                                (click)="removeContentFromCourse(content.id!)"> Remove content<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                  </svg></button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            }
+        </div>
+        <div class="col text-center" style="margin-top: 10%;">
+            <div class="mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                  </svg>
+            </div>
+            <div class="mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                  </svg>
+            </div>
+        </div>
+        <div class="col">
+            @if (teacherContents) {
+            <div>
+                <h3>Contenidos no integrados en el curso</h3>
+                @for (content of filteredContents; track content) {
+                <div class=" my-3">
+                    <div class="card">
+                        <div class="card-body" style="border: 4px solid #93f08c;">
+                            <h5 class="card-title">{{content.title}}</h5>
+                            <button type="submit" class="btn btn-success fit-content"
+                                (click)="addContentToCourse(content.id!)">add content<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                  </svg></button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            } @else {
+            <div>
+                <p>No hay nada</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>

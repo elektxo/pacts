@@ -1,0 +1,61 @@
+body {
+    font-family: 'Open+Sans', sans-serif;
+  }
+  
+  .card {
+    transition: transform .2s; /* Animation */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  
+  .progress-bar {
+    background-color: #166534;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+
+  .add-button {
+    background-color: #166534;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .card-img-top {
+    height: 150px; /* Fija una altura constante para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el espacio verticalmente dentro de la tarjeta */
+}
+
+.card-text {
+    overflow: hidden; /* Previene que el texto desborde la tarjeta */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita el texto a 3 líneas */
+    -webkit-box-orient: vertical;
+}
+
+.card {
+    display: flex;
+    flex-direction: column; /* Hace que el contenido de la tarjeta se organice verticalmente */
+    height: 100%; /* Hace que todas las tarjetas tengan el mismo alto */
+}
+
+.btn-danger{
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

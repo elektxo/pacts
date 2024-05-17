@@ -1,0 +1,58 @@
+<div class="container text-center">
+    @if (errorMessage) {
+        <div class="container col-lg-5 col-10 d-flex flex-column justify-contents-center align-items-center fw-bold mt-3">
+            <div class="p-2 my-2 w-100 bg-danger ">
+                <p>{{ errorMessage }}</p>
+            </div>
+        </div>
+    } @else {
+        <div class="d-flex justify-content-end mt-5 me-3">
+            <button class="add-button" [routerLink]="'/new-content'" routerLinkActive="active">Create new content</button>
+        </div>
+        <div class="row align-items-start">
+            @for(content of teacherContents; track content.id) {
+                <div class="col-md-4 my-3">
+                    <div class="card" style="margin-top: 25px; padding: 20px;">
+                        @if(content.imagePath!=null&&content.imagePath!=""){
+                            <img [src]="url+content.id" class="card-img-top" alt="Angular">
+                        } @else {
+                            <img src="https://source.unsplash.com/random/600x400?tech,angular" class="card-img-top" alt="Angular">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">{{content.title?.substring(0, 20)}}</h5>
+                            <p class="card-text">{{content.description?.substring(0, 50)}}</p>
+                            <p class="card-text">{{content.estimatedHours}}</p>
+                            <button class="btn btn-primary fit-content me-1" (click)="openEditForm(content.id!)">Editar</button>
+                            <button class="btn btn-danger fit-content ms-1" (click)="openDeleteWindow(content)">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal pe-3" id="deleteModal">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                @if (contentToDelete) {
+                    <h4 class="modal-title">Confirm deletion of: {{contentToDelete.title?.substring(0, 20)| titlecase }}</h4>
+                }
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Once you confirm the deletion of this content, you won't be able to recover it.
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <div class="d-flex justify-contents-center mx-auto">
+                    <button type="button" class="btn btn-danger me-1" (click)="deleteContent(contentToDelete.id!)">Confirm Deletion</button>
+                    <button type="button" class="btn btn-secondary ms-1" (click)="closeDeleteWindow()">Cancel Deletion</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

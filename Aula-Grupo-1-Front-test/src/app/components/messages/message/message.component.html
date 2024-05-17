@@ -1,0 +1,13 @@
+<section>
+    <div class="container">
+      <div class="position-fixed top-0 start-50 translate-middle-x w-auto p-3 fw-bold" style="z-index: 1050">
+        @for (message of messages; track message) {
+          <div class="alert alert-dismissible fade show message-window" role="alert" style="max-width: 600px;">
+            {{ message.text }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeMessage($index)"></button>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  

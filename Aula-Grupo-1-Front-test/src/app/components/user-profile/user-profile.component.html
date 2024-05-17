@@ -1,0 +1,33 @@
+<div *ngIf="user" class="user-profile my-4" >
+    <div class="profile-header mx-auto" style="max-width: 700px;">
+      <h2>User Profile</h2>
+      <button class="edit-profile-button" (click)="editProfile()">
+        <i class="fa-solid fa-pen"></i>
+        <span class="button-text">Edit Profile</span>
+      </button>
+    </div>
+    <div class="profile-details mx-auto" style="max-width: 700px;">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail">
+            <label for="firstName">Name:</label>
+            <input type="text" id="firstName" [disabled]="!editing" placeholder="{{ user.firstname }}">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail">
+            <label for="lastName">Lastname:</label>
+            <input type="text" id="lastName" [disabled]="!editing" placeholder="{{ user.lastname }}">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [disabled]="true" placeholder="{{ user.email }}">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

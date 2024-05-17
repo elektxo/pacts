@@ -1,0 +1,50 @@
+.background {
+    background-color: #F5F5F5;
+    height: 100vh; 
+}
+
+.githubtext{
+    text-align: left;
+    padding-left: 30px;
+}
+
+
+header {
+
+    padding: 20px;
+    text-align: center;
+}
+
+header p {
+    font-size: 1.2em; /* Cambia este valor al tamaño de fuente deseado */
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en una nueva línea cuando no hay suficiente espacio */
+}
+
+.image-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 8px;
+    min-width: 500px;
+}
+
+.card {
+    flex: 1;
+    margin-left: 20px; 
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 500px;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
