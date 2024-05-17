@@ -1,0 +1,37 @@
+package com.aula.config;
+
+import java.util.Properties;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+
+import lombok.RequiredArgsConstructor;
+
+@ConfigurationProperties(prefix = "email")
+@RequiredArgsConstructor
+@Configuration
+public class ApplicationConf {
+	
+	private String emailpassword;
+	
+	@Bean
+	JavaMailSender getJavaMailSender() {
+	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	    mailSender.setHost("smtp.gmail.com");
+	    mailSender.setPort(587);
+	    
+	    mailSender.setUsername("virtualclassroomgrupoalejandro@gmail.com");
+	    mailSender.setPassword(emailpassword);
+	    
+	    Properties props = mailSender.getJavaMailProperties();
+	    props.put("mail.transport.protocol", "smtp");
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.debug", "true");
+	    
+	    return mailSender;
+	}
+}
