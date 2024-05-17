@@ -1,0 +1,13 @@
+<div class="d-flex flex-column flex-md-row px-2">
+  <div class="sidebar">
+    <ul>
+      <li><a routerLink="teacher-courses" routerLinkActive="active"><i class="fas fa-book"></i><span class="link-text">Courses</span></a></li>
+      <li><a routerLink="contents"><i class="fas fa-file-alt"></i><span class="link-text">Contents</span></a></li>
+      <li><a routerLink="analytics" routerLinkActive="active"><i class="fas fa-chart-line"></i><span class="link-text">Analytics</span></a></li>
+      <!-- <li><a routerLink="meetings" routerLinkActive="active"><i class="fa-solid fa-phone"></i><span class="link-text">Meetings</span></a></li> -->
+    </ul>
+  </div>
+  <div class="content-area flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+</div>

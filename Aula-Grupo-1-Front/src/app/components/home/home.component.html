@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <div id="courseCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @for (course of allCourses; track course.id) {
+          <div class="carousel-item" [ngClass]="{'active': course === allCourses[0]}">
+            <img [src]="url + course.id" class="d-block w-100" alt="Course">
+          </div>
+        }
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
+        <span style="background-color: black;" class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
+        <span style="background-color: black;" class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  
+    <div class="d-flex justify-content-around align-items-center my-5">
+      @for (collaborator of collaborators;track collaborator.name) {
+        <div class="p-2">
+          <img [src]="collaborator.imgSrc" alt="{{collaborator.name}}" class="img-fluid" style="max-height: 50px;">
+        </div>
+      }
+    </div>
+  
+    <div class="card my-5">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <img [src]="randomTestimonial.imgSrc" alt="{{randomTestimonial.author}}" class="img-fluid rounded-circle">
+          </div>
+          <div class="col-md-10">
+            <h5 class="card-title">Featured Instructor: {{randomTestimonial.author}}</h5>
+            <p class="card-text">{{randomTestimonial.text}}</p>
+            <p class="text-muted">{{randomTestimonial.position}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

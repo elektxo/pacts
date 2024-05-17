@@ -1,0 +1,61 @@
+
+<section>
+    <div class="container col-md-4 py-4 my-2">
+        <form [formGroup]="contentForm" enctype="multipart/form-data">
+            
+            <div class="mb-3">
+                <label for="titleInput" class="form-label">Content title</label>
+                <input formControlName="title" class="form-control" id="titleInput" type="text" aria-describedby="titleHelp">
+                @if (title.invalid && (title.dirty || title.touched)) {
+                    <div class="text-danger">
+                        @if (title.errors?.['required']) {
+                            <div>Title is required.</div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Content description</label>
+                <input formControlName="description" class="form-control" id="descriptionInput" type="text">
+                @if (description.invalid && (description.dirty || description.touched)) {
+                    <div class="text-danger">
+                        @if (description.errors?.['required']) {
+                            <div>Description is required.</div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="estimatedHoursInput" class="form-label">Approximated duration</label>
+                <input formControlName="estimatedHours" class="form-control" id="estimatedHoursInput" type="number">
+                @if (estimatedHours.invalid && (estimatedHours.dirty || estimatedHours.touched)) {
+                    <div class="text-danger">
+                        @if (estimatedHours.errors?.['required']) {
+                            <div>Approximated duration is required.</div>
+                        }
+                        @if (estimatedHours.errors?.['min']) {
+                            <div>Approximated duration must be at least 1 hour.</div>
+                        }
+                    </div>
+                }
+            </div>  
+
+            <div class="mb-3">
+                <label for="fileInput" class="form-label">Files</label>
+                <input formControlName="file" class="form-control" id="fileInput" type="file" (change)="uploadFile($event)">
+                <!---->
+               <!--@if (file.invalid && (file.dirty || file.touched)) {
+                    <div class="text-danger">
+                        @if (file.errors?.['required']) {
+                            <div>El contenido debe tener un archivo asociado.</div>
+                        }
+                    </div>
+                }-->
+            </div>
+
+            <div class="d-flex flex-column justify-contents-center align-items-center mt-4">
+                <button type="submit" class="btn  fit-content" (click)="saveContent()">Guardar contenido</button>
+            </div>
+        </form>
+    </div>
+</section>

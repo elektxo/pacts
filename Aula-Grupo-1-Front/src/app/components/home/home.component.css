@@ -1,0 +1,22 @@
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .card {
+    background-color: #d1e7dd;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .rounded-circle {
+    border-radius: 50%;
+  }
+  

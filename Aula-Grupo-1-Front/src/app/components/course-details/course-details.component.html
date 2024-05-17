@@ -1,0 +1,79 @@
+
+
+<div class="container my-4">
+    
+    
+    <div class="row">
+        <div class="col">
+            @if(course.imagePath!=null&&course.imagePath!=""){
+                <img [src]="urlCourse+course.id" class="card-img-top" alt="Angular">
+            } @else {
+                <img src="https://source.unsplash.com/random/600x400?tech,angular" class="card-img-top" alt="Angular">
+            }
+        </div>
+        <div class="col-9">
+            <div>
+                <h4><b>Course: {{course.title}}</b></h4>
+                <p>{{course.description}}</p>
+                <h5>Price: {{course.price}}€</h5>
+                <p><b>Teached by:</b> {{user?.username}}</p>
+            </div>
+        </div>
+    </div>
+    
+    <br><br>
+
+<div class="row">
+    
+      <div class="col-md-6 col-12 mb-5">
+        @if (course) {
+            <div style="overflow-y: scroll;">
+                <h3><b>Included contents</b></h3>
+                @for (content of course.contents; track content) {
+                <div class="my-3">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center" style="background-color: #E5E7EB;">
+                            <div style="width: 250px; padding-top: 5%;"><p>{{content.title?.substring(0, 25)}}</p></div>
+                            <button type="submit" class="btn btn-danger fit-content" style="margin-left: 30%;"
+                                (click)="removeContentFromCourse(content.id!)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg></button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        } @else {
+            <div>
+                <p>No hay nada</p>
+            </div>
+        }
+      
+        
+      </div>
+      <div class="col-md-6 col-12">
+        @if (teacherContents) {
+            <div style="overflow-y: scroll;">
+                <h3><b>Available contents</b></h3>
+                @for (content of filteredContents; track content) {
+                <div class="my-3">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center" style="background-color: #E5E7EB;">
+                            <div style="width: 250px; padding-top: 5%;"><p>{{content.title?.substring(0, 25)}}</p></div>
+                            <button type="submit" class="btn btn-success fit-content" style="margin-left: 30%;"
+                                (click)="addContentToCourse(content.id!)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                </svg></button>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        } @else {
+            <div>
+                <p>No hay nada</p>
+            </div>
+            }
+      </div>
+    </div>
+  </div>

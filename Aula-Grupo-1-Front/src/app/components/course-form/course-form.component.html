@@ -1,0 +1,56 @@
+<section>
+    <div class="container col-md-4 py-4 my-2">
+        <form [formGroup]="courseForm">
+            
+            <div class="mb-3">
+                <label for="titleInput" class="form-label">Course title</label>
+                <input formControlName="title" class="form-control" id="titleInput" type="text" aria-describedby="titleHelp">
+                @if (title.invalid && (title.dirty || title.touched)) {
+                    <div class="text-danger">
+                        @if (title.errors?.['required']) {
+                            <div>Course title is required.</div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="descriptionInput" class="form-label">Course description</label>
+                <input formControlName="description" class="form-control" id="descriptionInput" type="text">
+                @if (description.invalid && (description.dirty || description.touched)) {
+                    <div class="text-danger">
+                        @if (description.errors?.['required']) {
+                            <div>Course description is required.</div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="priceInput" class="form-label">Price</label>
+                <input formControlName="price" class="form-control" id="priceInput" type="number">
+                @if (price.invalid && (price.dirty || price.touched)) {
+                    <div class="text-danger">
+                        @if (price.errors?.['required']) {
+                            <div>Price is required.</div>
+                        } @else if (price.errors?.['min']) {
+                            <div>Price must be a positive number.</div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label for="fileInput" class="form-label">Files</label>
+                <input formControlName="file" class="form-control" id="fileInput" type="file" (change)="uploadFile($event)">
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center mb-3">
+                <label for="freeInput" class="form-label m-0 pb-1 me-2">Free</label>
+                <input [checked]="free" formControlName="free" id="freeInput" type="checkbox">
+            </div>
+
+            <div class="d-flex flex-column justify-contents-center align-items-center mt-4">
+                <button type="submit" class="btn fit-content" (click)="saveCourse()">Save course</button>
+            </div>
+        </form>
+    </div>
+</section>

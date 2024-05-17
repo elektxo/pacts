@@ -1,0 +1,70 @@
+body {
+    font-family: 'Open+Sans', sans-serif;
+  }
+  
+  .card {
+    transition: transform .2s; 
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .progress-bar {
+    background-color: #22C55E;
+  }
+  
+  .username {
+    font-weight: 600;
+  }
+
+  .add-button {
+    background-color: #166534;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .card-img-top {
+    height: 150px; 
+    object-fit: cover; 
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.card-text {
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+.card {
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
+}
+
+.btn-primary {
+  background-color: #166534;
+  
+ 
+}
+
+#card-button-container {
+  height: 30px;
+  margin-top: 20px;
+}
+
+.card-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,46 @@
+.user-profile {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .edit-profile-button {
+    background-color: #166534;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .edit-profile-button .fa-pen {
+    margin-right: 10px; /* Ajusta el espacio entre el icono y el texto */
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .detail {
+    margin-bottom: 20px; /* Aumenta el espacio entre los campos */
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[disabled] {
+    background-color: #f0f0f0;
+  }

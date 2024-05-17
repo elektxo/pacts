@@ -1,0 +1,71 @@
+name: virtual-classroom-back
+
+networks:
+  classroom_network:
+
+services:
+  postgres:
+    container_name: postgresql
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - classroom_network
+
+  keycloak:
+    container_name: keycloak
+    image: classroom_keycloak:0.0.1
+    build:
+      context: ./keycloak
+      dockerfile: Dockerfile
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_DB: postgres
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_DB_URL: jdbc:postgresql://${POSTGRES_SERVER}:5432/${POSTGRES_DB}
+#      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - classroom_network
+
+  classroom_api:
+    container_name: classroom_api
+    image: classroom_api:0.0.1
+    build: .
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: ${KEYCLOAK_ISSUER_URL}
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: ${KEYCLOAK_ISSUER_URL}/protocol/openid-connect/certs
+      JWT_AUTH_CONVERTER_RESOURCE-ID: ${KEYCLOAK_CLIENT_ID}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${POSTGRES_SERVER}:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - classroom_network
+
+  classroom_page:
+    container_name: classroom_page
+    image: classroom_page:0.0.1
+    ports:
+      - 4200:80
+    depends_on:
+      - classroom_api
+    networks:
+      - classroom_network
+volumes:
+  postgres-data: {}
+#  keycloak-data: {}

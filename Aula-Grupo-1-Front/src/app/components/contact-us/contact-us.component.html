@@ -1,0 +1,45 @@
+<style>
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+</style>
+
+<div class="form-container">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Full name</label>
+    <input 
+    type="text" 
+    class="form-control" 
+    [(ngModel)]="FormContact.from_name"
+    id="formControl" 
+    placeholder="Write here your full name"/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input 
+  type="email" 
+  class="form-control" 
+  [(ngModel)]="FormContact.from_email"
+  id="formControl" 
+  placeholder="name@example.com"/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Subject</label>
+  <input 
+  type="text" 
+  class="form-control" 
+  [(ngModel)]="FormContact.subject"
+  id="formControl" 
+  placeholder="Write the Subject Here"/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Message</label>
+  <textarea class="form-control" id="formControl" placeholder="Write the message here" [(ngModel)]="FormContact.message" rows="3"></textarea>
+</div>
+<div class="btn-center">
+  <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="send()">Submit</button>
+
+</div>
+</div>

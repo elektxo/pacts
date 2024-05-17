@@ -1,0 +1,20 @@
+
+
+body {
+    font-family: 'Open+Sans', sans-serif;
+
+  }
+ 
+  .card {
+    transition: transform .2s; /* Animation */
+  }
+
+  .cardVerde {
+    background-color: #BBF7D0;
+  }
+ 
+  .card:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+
